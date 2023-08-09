@@ -38,7 +38,7 @@ const upload = multer({storage: storage,
 
 const router = Router();
   
-router.post('/createUser',upload.single('imgUser'), createUser)
+router.post('/createUser', upload.single('imgUser'), createUser)
 router.post('/login', login)
 router.get('/getUsers', getUsers);
 

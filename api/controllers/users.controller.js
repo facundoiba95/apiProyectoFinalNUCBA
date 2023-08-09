@@ -40,7 +40,7 @@ export const createUser = async ( req,res ) => {
 export const login = async ( req,res ) => {
   try {
     const { username, password } = req.body;
-    console.log(username);
+
     const findExistUser = await User.findOne({username});
     if(!findExistUser) return res.status(404).json({message: 'Usuario inexistente',status:404});
 
@@ -63,7 +63,7 @@ export const login = async ( req,res ) => {
 
 export const getUsers = async ( req,res ) => {
   try {
-    const foundUsers = await User.find();
+    const foundUsers = await User.find({},{password:0});
     res.status(200).json(foundUsers);
   } catch (error) {
     res.status(400).json(error);

@@ -11,8 +11,7 @@ export const getMatchesLeagues = async ( req,res ) => {
             const localHour = `${item.utcDate.slice(11,13) - 3}${item.utcDate.slice(13,16)}` 
             return { ... item, date: item.utcDate.slice(0,10), hour: localHour }
         })
-        //  const isCup = matches.some(match => match.competition.type == 'CUP')
-        //  console.log(isCup);
+        
          res.status(200).json({matches})
     } catch (error) {
         console.log(error);
@@ -43,11 +42,7 @@ export const getMatchesLeaguesToday = async ( req,res ) => {
 
 export const getMatchesLeagueArgentina = async ( req,res ) => {
     try {
-        // const date = new Date().toISOString().slice(0,10);
-        const primerafase = '1st%20Phase'
-        const segundafase = '2nd%20Phase%20'
-       // round=-%2012'
-           const connect = await fetch(`https://api-football-v1.p.rapidapi.com/v3/fixtures?league=128&season=2023&round=${segundafase}`, optionsApiArgentina)
+           const connect = await fetch(`https://api-football-v1.p.rapidapi.com/v3/fixtures?league=128&season=2023`, optionsApiArgentina)
            const resApi = [await connect.json()];
            const matches = resApi[0].response.map(item => {
 
